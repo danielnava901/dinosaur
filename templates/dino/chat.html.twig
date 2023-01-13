@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chat!{% endblock %}
+
+{% block body %}
+
+    <div class="w-full h-full">
+        <div {{ react_component('ChatPage', {"chatData": chatData}) }}>
+            Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+        </div>
+    </div>
+    <script>
+        alert("chat");
+        const bc = new BroadcastChannel("close_session_channel");
+
+        bc.onmessage = (event) => {
+            console.log(event);
+            if(event.data === "close_session") {
+                console.log("cerrando window");
+                window.close();
+            }else if(event.data === "otro_mensaje"){
+                console.log("OTRO MENSAJE");
+            }
+        };
+    </script>
+{% endblock %}

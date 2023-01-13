@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio!{% endblock %}
+
+{% block body %}
+
+<div class="w-full h-full">
+    <div class="w-full h-full" {{ react_component('HomePage', {
+        dummyUrl: path("app_dummy"),
+        chatUrl: path("app_chat", {"theOtherId": "__THE_OTHER_ID__"})
+    }) }}>
+        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    </div>
+</div>
+{% endblock %}
